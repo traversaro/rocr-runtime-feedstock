@@ -1,16 +1,16 @@
 {% set name = "rocr-runtime" %}
-{% set version = "6.3.3" %}
+{% set version = "7.2.4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/ROCm/ROCR-Runtime/archive/refs/tags/rocm-{{ version }}.tar.gz
+  url: https://github.com/ROCm/rocm-systems/releases/download/rocm-{{ version }}/rocr-runtime.tar.gz
   sha256: aa2e30d3d68707d6df4840e954bb08cc13cd312cec1a98a64d97adbe07262f50
 
 build:
-  number: 2
+  number: 0
   skip: true  # [not linux]
 
 requirements:
@@ -26,12 +26,13 @@ requirements:
   host:
     - elfutils
     - rocm-device-libs {{ version }}
-    - clangdev 19.*
-    - llvmdev  19.*
-    - lld      19.*
+    - clangdev 22.*
+    - llvmdev  22.*
+    - lld      22.*
     - numactl
     - libdrm
     - zlib
+    - rocm-core {{ version }}
 
 test:
   commands:
@@ -49,3 +50,4 @@ extra:
   recipe-maintainers:
     - zklaus
     - isuruf
+    - conda-forge/rocm-core
