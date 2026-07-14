@@ -1,2 +1,5 @@
+# glibc >=2.27 is required by the use of 
+# memfd_create and MFD_ALLOW_SEALING
+# in https://github.com/ROCm/rocm-systems/blob/rocm-7.2.4/projects/rocr-runtime/libhsakmt/src/fmm.c#L1679
 c_stdlib_version:   # [linux]
   - "2.28"          # [linux]
