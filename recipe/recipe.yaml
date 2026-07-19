@@ -28,19 +28,21 @@ requirements:
     - vim
   host:
     - elfutils
-    - rocm-device-libs 7.2.4.*
+    - rocm-device-libs ${{ version }}.*
     - clangdev 22.*
     - llvmdev  22.*
     - lld      22.*
     - numactl
     - libdrm
     - zlib
-    - rocm-core 7.2.4.*
+    - rocm-core ${{ version }}.*
 
 tests:
-  - script:
-      - test -f $PREFIX/include/hsa/hsa.h
-      - test -f $PREFIX/lib/libhsa-runtime64.so
+  - package_contents:
+      include:
+        - hsa/hsa.h
+      lib:
+        - hsa-runtime64
 
 about:
   license: NCSA
